@@ -12,17 +12,15 @@ sudoku(X,Y,N) :- initial(X,Y,N).
 :- sudoku(X,Y,N), sudoku(X,Y,N'), N != N'.
 %there cannot be multiple values in the same grid square
 
-{ sudoku(1..n,1..n,N) } :- N=1..n.
+{ sudoku(X,Y,1..n) } 1 :- X=1..n, Y=1..n.
 %4 rows, 4 columns, with a digit N, 1 <= N <= 4
 
 :- { sudoku(X,Y,N) } != n*n.
 %there must be 16 sudoku grid squares
 
-%:- sudoku(X,Y,N), sudoku(X,Y',N'), N != N'.
-
-:- sudoku(X,Y,N), sudoku(X,Y',N'), N = N'.
-:- sudoku(X,Y,N), sudoku(X',Y,N'), N = N'.
-
+:- sudoku(X,Y,N), sudoku(X',Y',N'), N = N', X' != X, Y = Y'.
+:- sudoku(X,Y,N), sudoku(X',Y',N'), N = N', X' = X, Y != Y'.
+%columns and rows must all have unique values
 
 #const n = 4.
 #show sudoku/3.
