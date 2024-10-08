@@ -6,4 +6,23 @@
 
 % Your implementation please...
 
+sudoku(X,Y,N) :- initial(X,Y,N).
+%every initial instance corresponds to a sudoku grid square
+
+:- sudoku(X,Y,N), sudoku(X,Y,N'), N != N'.
+%there cannot be multiple values in the same grid square
+
+{ sudoku(1..n,1..n,N) } :- N=1..n.
+%4 rows, 4 columns, with a digit N, 1 <= N <= 4
+
+:- { sudoku(X,Y,N) } != n*n.
+%there must be 16 sudoku grid squares
+
+%:- sudoku(X,Y,N), sudoku(X,Y',N'), N != N'.
+
+:- sudoku(X,Y,N), sudoku(X,Y',N'), N = N'.
+:- sudoku(X,Y,N), sudoku(X',Y,N'), N = N'.
+
+
+#const n = 4.
 #show sudoku/3.
