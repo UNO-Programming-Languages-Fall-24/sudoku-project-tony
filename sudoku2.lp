@@ -9,9 +9,6 @@
 sudoku(X,Y,N) :- initial(X,Y,N).
 %every initial instance corresponds to a sudoku grid square
 
-:- sudoku(X,Y,N), sudoku(X,Y,N'), N != N'.
-%there cannot be multiple values in the same grid square
-
 1 { sudoku(X,Y,1..n) } 1 :- X = 1..n, Y = 1..n.
 %9 rows, 9 columns, with a digit N, 1 <= N <= 9
 
