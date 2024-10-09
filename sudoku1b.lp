@@ -28,3 +28,4 @@ subgrid(X,Y,G) :- sudoku(X,Y,N), G = (((Y - 1) / s) * (n / s)) + ((X - 1)/ s) + 
 #const s = 2.
 #const n = 4.
 #show sudoku/3.
+#show subgrid/3.
