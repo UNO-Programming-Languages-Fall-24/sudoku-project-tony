@@ -12,11 +12,11 @@ sudoku(X,Y,N) :- initial(X,Y,N).
 :- sudoku(X,Y,N), sudoku(X,Y,N'), N != N'.
 %there cannot be multiple values in the same grid square
 
-{ sudoku(X,Y,1..n) } 1 :- X=1..n, Y=1..n.
-%4 rows, 4 columns, with a digit N, 1 <= N <= 4
+1 { sudoku(X,Y,1..n) } 1 :- X = 1..n, Y = 1..n.
+%9 rows, 9 columns, with a digit N, 1 <= N <= 9
 
-:- { sudoku(X,Y,N) } != n*n.
-%there must be 16 sudoku grid squares
+:- #count { X,Y,N : sudoku(X,Y,N) } != n*n.
+%there must be 81 sudoku grid squares
 
 :- sudoku(X,Y,N), sudoku(X',Y',N'), N = N', X' != X, Y = Y'.
 :- sudoku(X,Y,N), sudoku(X',Y',N'), N = N', X' = X, Y != Y'.
@@ -29,6 +29,6 @@ subgrid(Y,X,G) :- sudoku(X,Y,N), G = (((Y - 1) / s) * (n / s)) + ((X - 1)/ s) + 
 N = N', X' != X, Y != Y', G = G'.
 %ensure there are no duplicates within a subgrid
 
-#const s = 2.
-#const n = 4.
+#const s = 3.
+#const n = 9.
 #show sudoku/3.
