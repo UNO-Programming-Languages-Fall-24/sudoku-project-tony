@@ -22,7 +22,7 @@ sudoku(X,Y,N) :- initial(X,Y,N).
 :- sudoku(X,Y,N), sudoku(X',Y',N'), N = N', X' = X, Y != Y'.
 %columns and rows must all have unique values
 
-subgrid(X,Y,G) :- sudoku(X,Y,N), G = (((Y - 1) / s) * (n / s)) + ((X - 1)/ s) + 1.
+subgrid(Y,X,G) :- sudoku(X,Y,N), G = (((Y - 1) / s) * (n / s)) + ((X - 1)/ s) + 1.
 %calculate the subgrid for each X,Y location
 
 #const s = 2.
